@@ -2,7 +2,7 @@ trigger:
 - main
 
 pool:
-  name: local-agent
+  name: Azure Pipelines
 
 steps:
 - task: AzureCLI@2
