@@ -8,9 +8,16 @@ steps:
 - task: AzureCLI@2
   inputs:
     azureSubscription: 'ado-oidc-connection'
-    scriptType: bash
-    scriptLocation: inlineScript
+    scriptType: 'bash'
+    scriptLocation: 'inlineScript'
     inlineScript: |
       az account show
       az storage container list \
         --account-name mystorageaccount
+- task: TerraformInstaller@1
+  inputs:
+    terraformVersion: 'latest'
+- task: TerraformTask@5
+  inputs:
+    provider: 'azurerm'
+    command: 'init'
