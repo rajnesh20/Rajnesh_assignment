@@ -1,0 +1,16 @@
+trigger:
+- main
+
+pool:
+  name: local-agent
+
+steps:
+- task: AzureCLI@2
+  inputs:
+    azureSubscription: 'ado-oidc-connection'
+    scriptType: bash
+    scriptLocation: inlineScript
+    inlineScript: |
+      az account show
+      az storage container list \
+        --account-name mystorageaccount
